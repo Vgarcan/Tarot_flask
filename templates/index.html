@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    
+    <title>Carta con giro</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            {% for card in cards %}
+            <div class="col-md-4">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-face card-front background-div" style="background-image: url('{{ card.image }}'); ">
+                            <h5 class="card-title" style="background-color: rgba(220, 223, 225, 0.539);color: rgb(0, 0, 0);"><em>{{ card.name }}</em></h5>
+                            <div class="card-text-container">
+                                <h6>meaning_up</h6>
+                                <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card.meaning_up }}</p>
+                                <h6>meaning_rev</h6>
+                                <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card.meaning_rev }}</p>
+                            </div>
+                            <button class="btn btn-primary" href="url('{{ card.image }}')">Ver imagen</button>
+                            <button class="btn btn-primary flip-button">Girar</button>
+                        </div>
+                        <div class="card-face card-back">
+                            <h5 class="card-title">Cara Trasera</h5>
+                            <div class="card-text-container">
+                                <p class="card-text">{{ card.desc }}</p>
+                            </div>
+                            <button class="btn btn-primary flip-button">Girar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="static/js/script.js"></script>
+    
+</body>
+</html>
