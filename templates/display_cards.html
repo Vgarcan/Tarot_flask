@@ -1,0 +1,37 @@
+<div class="container" style="background: transparent;">
+    <div class="row">
+        {% for card in cards %}
+        <div class="col-md-4" >
+            <div class="card-container">
+                <div class="card">
+                    <div class="cad-face card-front background-div" style="background-image: url('{{ card.image }}'); ">
+                        <h5 class="card-title" style="background-color: rgba(220, 223, 225, 0.539);color: rgb(0, 0, 0);"><em>{{ card.name }}</em></h5>
+                        <div class="card-text-container">
+                            <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;"><em>AMOR</em></h6>
+                            <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card.amor }}</p>
+                            <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;"><em>SALUD</em></h6>
+                            <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card.salud}}</p>
+                        </div>
+                        <a class="btn btn-primary" href="{{ card.image }}">Ver imagen</a>
+                        <button class="btn btn-primary flip-button">Girar</button>
+                    </div>
+                    <div class="card-face card-back">
+                        <h5 class="card-title">Cara Trasera</h5>
+                        <div class="card-text-container">
+                            <p class="card-text">{{ card.desc }}</p>
+                        </div>
+                        <button class="btn btn-primary flip-button">Girar</button>
+                    </div>
+                    <div class="card-text-container">
+                        <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">meaning_up</h6>
+                        <p class="card-text">{{ card.meaning_up }}</p>
+                        <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">meaning_rev</h6>
+                        <p class="card-text">{{ card.meaning_rev }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
