@@ -1,0 +1,38 @@
+<div class="container">
+    <h2 class="mt-4">Consulta de Horóscopo</h2>
+    <form action="/procesar" method="post" class="mt-4">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="signo">Signo del Zodíaco:</label>
+            <input type="text" id="signo" name="signo" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="consulta">Consulta:</label>
+            <select id="consulta" name="consulta" class="form-control" required>
+                {% for item, value in c_display[0].items() %}
+                    {% if loop.index > 8 and loop.index < 14  %}
+                        <option value="{{ item }}">{{ item.capitalize() }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="consulta2">Consulta:</label>
+            <select id="consulta2" name="consulta2" class="form-control" required>
+                {% for item, value in c_display[0].items() %}
+                    {% if loop.index > 8 and loop.index < 14  %}
+                        <option value="{{ item }}">{{ item.capitalize() }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <a type="submit" class="btn btn-primary" href="{{ url_for('principal2', q1=request.form.get('consulta'), q2=request.form.get('consulta2')) }}">Consultar</a>
+    </form>
+</div>

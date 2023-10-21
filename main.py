@@ -1,24 +1,32 @@
 
-from flask import Flask,render_template
+from flask import Flask,render_template, request, redirect
 import requests
 import random
 
 app=Flask(__name__)
 
 
-chosen_number = 6
+add_number = 3
+chosen_number = 5
 cards= requests.get('https://tarot-api-es.vercel.app/api/v1/cards').json()
-# selected_cards = random.sample(cards['cards'], chosen_number)
-
-# for card in selected_cards:
-#     print (card['name'],'\n', card['meaning_rev'])
 
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def principal():
+    selected_cards = random.sample(cards['cards'], add_number)
+    display_cards = random.sample(cards['cards'], chosen_number)
+    if request.method == 'POST':
+        q1 = request.form.get('consulta')
+        q2 = request.form.get('consulta2')
+        return redirect(url_for('principal2', q1=q1, q2=q2))
+    return render_template('index.html', cards=selected_cards, c_display=display_cards)
+
+
+@app.route('/reading/<q1>/<q2>')
+def principal2(q1,q2):
     selected_cards = random.sample(cards['cards'], chosen_number)
-    return render_template('index.html', cards=selected_cards)
+    return render_template('index_copy.html', cards=selected_cards, q1=q1, q2=q2)
 
 
 

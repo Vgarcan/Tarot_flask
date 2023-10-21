@@ -7,10 +7,10 @@
                     <div class="cad-face card-front background-div" style="background-image: url('{{ card.image }}'); ">
                         <h5 class="card-title" style="background-color: rgba(220, 223, 225, 0.539);color: rgb(0, 0, 0);"><em>{{ card.name }}</em></h5>
                         <div class="card-text-container">
-                            <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;"><em>AMOR</em></h6>
-                            <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card.amor }}</p>
-                            <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;"><em>SALUD</em></h6>
-                            <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card.salud }}</p>
+                            <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;"><em>{{ q1.capitalize() }}</em></h6>
+                            <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card[q1] }}</p>
+                            <h6 style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;"><em>{{ q2.capitalize() }}</em></h6>
+                            <p class="card-text" style="background-color: rgba(12, 56, 95, 0.527);color: aliceblue;">{{ card[q2] }}</p>
                         </div>
                         <a class="btn btn-primary" href="{{ card.image }}">Ver imagen</a>
                         <button class="btn btn-primary flip-button">Girar</button>
