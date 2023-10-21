@@ -12,14 +12,10 @@ cards= requests.get('https://tarot-api-es.vercel.app/api/v1/cards').json()
 
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def principal():
     selected_cards = random.sample(cards['cards'], add_number)
     display_cards = random.sample(cards['cards'], chosen_number)
-    if request.method == 'POST':
-        q1 = request.form.get('consulta')
-        q2 = request.form.get('consulta2')
-        return redirect(url_for('principal2', q1=q1, q2=q2))
     return render_template('index.html', cards=selected_cards, c_display=display_cards)
 
 
