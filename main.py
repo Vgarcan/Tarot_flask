@@ -19,8 +19,10 @@ def principal():
     return render_template('index.html', cards=selected_cards, c_display=display_cards)
 
 
-@app.route('/reading/<q1>/<q2>')
-def principal2(q1,q2):
+@app.route('/reading', methods= ['POST','GET'])
+def principal2():
+    q1= request.form['consulta']
+    q2= request.form['consulta2']
     selected_cards = random.sample(cards['cards'], chosen_number)
     return render_template('index_copy.html', cards=selected_cards, q1=q1, q2=q2)
 
